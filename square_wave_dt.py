@@ -21,7 +21,11 @@ y = signal.lfilter(b, a, x)
 
 X = fftshift(fft(x))
 X_mag = np.abs(X)
-f = fftshift(fftfreq(len(x)) * fs)
+f_x = fftshift(fftfreq(len(x)) * fs)
+
+Y = fftshift(fft(y))
+Y_mag = np.abs(Y)
+f_y = fftshift(fftfreq(len(y)) * fs)
 
 # plot original and filtered square wave
 fig1, ax1 = plt.subplots()
@@ -41,14 +45,15 @@ plt.setp(yml, markerfacecolor='none', markeredgewidth='1', markeredgecolor='#d65
 plt.setp(ysl, linewidth='1', color='#d65128')
 plt.setp(ybl, color='none')
 ax1.set_xlabel('Time (s)')
-ax1.set_title('Square Wave Filtered')
+ax1.set_title('Discrete-Time Square Wave Filtered with Low-Pass IIR')
 
 # plot freq spectrum
 fig2, ax2 = plt.subplots()
-ax2.plot(f, X_mag)
+ax2.plot(f_x, X_mag)
+ax2.plot(f_y, Y_mag)
 ax2.set_xlim(-fs/2, fs/2)
 ax2.set_xlabel('Frequency (Hz)')
-ax2.set_ylabel('Magnitude (dB)')
+ax2.set_ylabel('Magnitude')
 ax2.set_title('Frequency Spectrum')
 
 # plot filter freq response

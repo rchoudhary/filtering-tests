@@ -43,7 +43,7 @@ ax1.grid(which='major', axis='x', alpha=1)
 ax1.plot(t, x)
 ax1.plot(t, y)
 ax1.set_xlabel('Time (s)')
-ax1.set_title('Square Wave')
+ax1.set_title('Continuous-Time Square Wave Filtered with RC Filter')
 
 # plot freq spectrum
 fig2, ax2 = plt.subplots()
